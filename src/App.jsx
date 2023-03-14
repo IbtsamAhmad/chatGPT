@@ -7,7 +7,8 @@ import { useState } from "react";
 
 function App() {
   const configuration = new Configuration({
-    apiKey: "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"
+    apiKey: "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",
+    // apiKey: "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"
     // apiKey: import.meta.env.VITE_Open_AI_Key,
   });
   const openai = new OpenAIApi(configuration);
