@@ -1,43 +1,30 @@
-import "./App.css";
-import { Configuration, OpenAIApi } from "openai";
-import OptionSelection from "./components/OptionSelection";
-import Translation from "./components/Translation";
-import { arrayItems } from "./AIOptions";
-import { useState } from "react";
+import React from 'react'
+import { useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
-function App() {
-  const configuration = new Configuration({
-    apiKey: "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",
-    // apiKey: "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"
-    // apiKey: import.meta.env.VITE_Open_AI_Key,
-  });
-  const openai = new OpenAIApi(configuration);
-  const [option, setOption] = useState({});
-  const [result, setResult] = useState("");
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  // console.log(import.meta.env.VITE_Open_AI_Key);
-  const selectOption = (option) => {
-    setOption(option);
-  };
+ import GolfModal from "./components/GolfModal/Modal";
+ import GolfStick from "./components/GolfStick/GolfStick"
 
-  const doStuff = async () => {
-    setLoading(true)
-    let object = { ...option, prompt: input };
 
-    const response = await openai.createCompletion(object);
 
-    setResult(response.data.choices[0].text);
-    setLoading(false);
-  };
 
+const App = () => {
   return (
-    <div className="App">
-      {Object.values(option).length === 0 ? (
-        <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
-      ) : (
-        <Translation doStuff={doStuff} setInput={setInput} result={result} loading={loading} />
-      )}
+    <div style={{ height: "500px" }}>
+      <h1>Modal</h1>
+      {/* <GolfStick /> */}
+
+      <Canvas>
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <Suspense fallback={null}>
+          <GolfModal />
+        </Suspense>
+        <pointLight position={[-10, -10, -10]} />
+
+        <OrbitControls enableZoom={false} />
+      </Canvas>
     </div>
   );
 }
