@@ -60,4 +60,16 @@
   font-family: Poppins;
   font-size: 25px;
   line-height: 2.5rem;
+  color: #014b7c;
+}
+
+
+
+.stick-container{
+    display: block;
+      /* width: 1887px; */
+      height: 800px !important;
+      touch-action: none;
+      /* width: 205px !important; */
+      /* background: red !important; */
 }
