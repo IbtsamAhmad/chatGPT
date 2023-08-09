@@ -1,36 +1,28 @@
-import React, { Suspense } from "react";
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
+import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-
- import GolfModal from "./components/GolfModal/Modal";
- import GolfStick from "./components/GolfStick/GolfStick"
- import Box from "./components/Box/Box"
- import "./App.css"
+import { useTexture, OrbitControls } from "@react-three/drei";
+import Box from "./components/NewBox/Box"
+// import Animation  from "./components/animation/animation";
+import "../src/App.css"
 
 
 
-
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1>Modal</h1>
-      <div className="stick-container">
-        <Box/>
-        {/* <GolfStick /> */}
-      </div>
-
-      {/* <Canvas>
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-        <Suspense fallback={null}>
-          <GolfModal />
-        </Suspense>
-        <pointLight position={[-10, -10, -10]} />
-
-        <OrbitControls enableZoom={false} />
-      </Canvas> */}
+    <div className="stick-container">
+      {/* <Animation/> */}
+      <Box/>
     </div>
+    // <Canvas
+    //   camera={{ fov: 70, near: 0.01, far: 100, position: [0, 0, 6] }}
+    //   style={{ height: "100vh", backgroundColor: "#87CEEB" }}
+    // >
+    //   <OrbitControls />
+    //   <Suspense fallback={null}>
+    //     <Box />
+    //   </Suspense>
+    // </Canvas>
   );
 }
 
